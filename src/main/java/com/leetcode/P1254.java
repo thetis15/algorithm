@@ -6,23 +6,23 @@ public class P1254 {
         int column = grid[row - 1].length;
         int count = 0;
 
+
+
+        // 가장자리에 있는 섬을 모두 바다로 변경
         for (int i = 0; i < row; i++) {
-            if (i == 0 || i == row - 1) {
-                for (int j = 0; j < column ; j++) {
-                    if (grid[i][j] == 0) {
-                        dfs(grid, i, j);
-                    }
-                }
+            if (grid[i][0] == 0) {
+                dfs(grid, i, 0);
+            }
+            if (grid[i][column - 1] == 0) {
+                dfs(grid, i, column - 1);
             }
         }
-
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < column; j++) {
-                if (j == 0 || j == column - 1) {
-                    if (grid[i][j] == 0) {
-                        dfs(grid, i, j);
-                    }
-                }
+        for (int j = 0; j < column; j++) {
+            if (grid[0][j] == 0) {
+                dfs(grid, 0, j);
+            }
+            if (grid[row - 1][j] == 0) {
+                dfs(grid, row - 1, j);
             }
         }
 
