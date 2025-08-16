@@ -13,4 +13,8 @@ public class StringUtils {
         return prefix + jsonArrayString.replace('[','{')
                 .replace(']','}');
     }
+
+    public static String doubleQuotationToSingle(String jsonArrayString) {
+        return jsonArrayString.replace('"','\'');
+    }
 }
