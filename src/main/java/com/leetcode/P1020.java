@@ -23,13 +23,13 @@ public class P1020 {
         var yl = grid[0].length;
 
         for (int y = 0; y < yl; y++) {
-            dfs(0, y, grid, new boolean[xl][yl]);
-            dfs(xl - 1, y, grid, new boolean[xl][yl]);
+            dfs(0, y, grid);
+            dfs(xl - 1, y, grid);
         }
 
         for (int x = 0; x < xl; x++) {
-            dfs(x, 0, grid, new boolean[xl][yl]);
-            dfs(x, yl - 1, grid, new boolean[xl][yl]);
+            dfs(x, 0, grid);
+            dfs(x, yl - 1, grid);
         }
 
         for (int[] ints : grid) {
@@ -42,17 +42,14 @@ public class P1020 {
 
     }
 
-    private void dfs(int x, int y, int[][] grid, boolean[][] visited) {
-        if(x < 0 || x >= visited.length || y < 0 || y >= visited[0].length || visited[x][y]) return;
+    private void dfs(int x, int y, int[][] grid) {
+        if(x < 0 || x >= grid.length || y < 0 || y >= grid[0].length || grid[x][y] == 0) return;
 
-        visited[x][y] = true;
-        if (grid[x][y] == 1) {
-            grid[x][y] = 0;
-            dfs(x + 1, y, grid, visited); // up
-            dfs(x, y + 1, grid, visited); // right
-            dfs(x - 1, y, grid, visited); // down
-            dfs(x, y - 1, grid, visited); // left
-        }
+        grid[x][y] = 0;
+        dfs(x + 1, y, grid); // up
+        dfs(x, y + 1, grid); // right
+        dfs(x - 1, y, grid); // down
+        dfs(x, y - 1, grid); // left
 
     }
 
