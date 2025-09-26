@@ -17,23 +17,24 @@ public class P3619 {
         for(int i = 0; i < grid.length; i++){
             for(int j = 0; j < grid[i].length; j++){
                 if(grid[i][j] > 0){
-                    long[] sum = new long[1];
-                    bfs(grid, i, j, sum);
-                    if(sum[0] > 0 && sum[0] % k == 0) count++;
+                    int sum = bfs(grid, i, j, 0);
+                    if(sum > 0 && sum % k == 0) count++;
                 }
             }
         }
         return count;
     }
 
-    void bfs(int[][] grid, int x, int y, long[] sum) {
-        if(x < 0 || grid.length <= x || y < 0 || grid[x].length <= y || grid[x][y] == 0) return;
+    int bfs(int[][] grid, int x, int y, int sum) {
+        if(x < 0 || grid.length <= x || y < 0 || grid[x].length <= y || grid[x][y] == 0) return sum;
 
-        sum[0] += grid[x][y];
+        sum += grid[x][y];
         grid[x][y] = 0;
-        bfs(grid, x - 1, y, sum); // left
-        bfs(grid, x, y + 1, sum); // up
-        bfs(grid, x + 1, y, sum); // right
-        bfs(grid, x, y - 1, sum); // down
+        sum += bfs(grid, x - 1, y, sum); // left
+        sum += bfs(grid, x, y + 1, sum); // up
+        sum += bfs(grid, x + 1, y, sum); // right
+        sum += bfs(grid, x, y - 1, sum); // down
+
+        return sum;
     }
 }
