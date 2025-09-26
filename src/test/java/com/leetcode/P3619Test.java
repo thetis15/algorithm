@@ -19,4 +19,10 @@ class P3619Test {
         int[][] grid = {{3,0,3,0}, {0,3,0,3}, {3,0,3,0}};
         Assertions.assertThat(p.countIslands(grid, 3)).isEqualTo(6);
     }
+
+    @Test
+    void tc3(){
+        int[][] grid = {{0,0,0},{0,0,1},{11,0,6},{0,10,2},{0,0,0},{8,0,0}};
+        Assertions.assertThat(p.countIslands(grid, 19)).isEqualTo(1);
+    }
 }
