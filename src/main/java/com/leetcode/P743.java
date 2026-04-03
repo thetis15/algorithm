@@ -1,6 +1,7 @@
 package com.leetcode;
 
 
+import com.leetcode.util.Tuple;
 import java.util.*;
 
 /**
@@ -59,4 +60,3 @@ public class P743 {
     }
 }
 
-record Tuple(int node, int time) { }
