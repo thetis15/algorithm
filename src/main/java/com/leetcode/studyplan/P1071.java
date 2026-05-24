@@ -1,5 +1,8 @@
 package com.leetcode.studyplan;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class P1071 {
     public String gcdOfStrings(String str1, String str2) {
         int l = Math.max(str1.length(), str2.length());
@@ -20,7 +23,10 @@ public class P1071 {
                     System.out.println(i + ":" + nextIdx + " " + sstr1);
                     if(!(sstr1.equals(base))) {
                         isSame1 = false;
-                        System.out.println("not same1");
+
+                        if (!str1.isEmpty()) {
+                            System.out.println("not same1");
+                        }
                         break;
                     } else {
                         isSame1 = true;
